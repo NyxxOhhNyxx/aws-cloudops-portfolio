@@ -44,7 +44,7 @@ def home():
     <body>
         <div class="card">
             <h1>CloudOps</h1>
-            <h2>AWS Cloud Engineering Portfolio</h2>
+            <h2>AWS Cloud Engineering & DevOps Portfolio</h2>
             <p>Deployed on Amazon EC2 with Ubuntu Linux.</p>
             <p>Python | Flask | Gunicorn | Nginx</p>
             <p class="status">Application Online</p>
