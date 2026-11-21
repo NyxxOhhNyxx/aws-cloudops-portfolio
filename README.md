@@ -27,6 +27,27 @@ network traffic, CPU credit balance, and EC2 instance health.
 
 ![CloudOps Monitoring Dashboard](docs/screenshots/cloudwatch-dashboard.png)
 
+## HTTPS and Security
+
+Implemented HTTPS encryption for the publicly accessible
+CloudOps application using Let's Encrypt and Certbot.
+
+### Security Features
+
+- HTTPS encryption using a trusted TLS certificate.
+- Automatic HTTP-to-HTTPS redirection through Nginx.
+- Certificate renewal configured and successfully tested.
+- Restricted SSH access through AWS Security Groups.
+- SSH key-based server authentication.
+- Gunicorn accessible only through the local reverse proxy.
+- Sensitive files excluded from Git through .gitignore.
+
+### Live Application
+
+**Website:** https://cloudops-portfolio.duckdns.org
+
+**Health Check:** https://cloudops-portfolio.duckdns.org/health
+
 ## Implemented Features
 
 - Provisioned and configured an AWS EC2 instance.
