@@ -20,6 +20,13 @@ The application is deployed on an Amazon EC2 virtual machine running Ubuntu Linu
 - **AWS CloudWatch:** Infrastructure performance monitoring.
 - **AWS VPC:** Virtual network and security group configuration.
 
+## Infrastructure Monitoring
+
+CloudOps uses Amazon CloudWatch to monitor CPU utilization,
+network traffic, CPU credit balance, and EC2 instance health.
+
+![CloudOps Monitoring Dashboard](docs/screenshots/cloudwatch-dashboard.png)
+
 ## Implemented Features
 
 - Provisioned and configured an AWS EC2 instance.
