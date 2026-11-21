@@ -221,3 +221,29 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+
+# ========================================
+# CloudOps - Security
+# ========================================
+
+# SSH private keys and certificates
+*.pem
+*.key
+*.p12
+*.pfx
+
+# AWS credentials and configuration
+.aws/
+aws_access_key*
+credentials.json
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Local sensitive files
+secrets/
+secrets.json
+
