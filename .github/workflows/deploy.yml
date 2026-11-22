@@ -4,6 +4,12 @@ name: Deploy CloudOps to AWS EC2
 on:
   workflow_dispatch:
 
+  push:
+    branches:
+      - main
+    paths:
+      - 'app.py'
+
 permissions:
   id-token: write
   contents: read
