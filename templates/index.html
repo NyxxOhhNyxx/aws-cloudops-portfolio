@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero shell" aria-labelledby="hero-title">
+  <div class="hero-grid">
+    <div class="hero-copy" data-reveal>
+      <div class="status-pill"><span class="pulse"></span> Open to opportunities <span class="status-divider"></span> Soignies, Belgium</div>
+      <div class="micro hero-index">INDEPENDENT BUILDER <span class="rule"></span> CLOUD / DEVOPS / SECURITY</div>
+      <h1 id="hero-title">I build the systems<br><span class="serif">behind the</span> <span class="highlight">experience.</span></h1>
+      <p class="hero-summary">I'm Nikolas — an aspiring cloud and infrastructure engineer with hands-on experience in Linux servers, networking, software development and automation. Curious by nature. Technical by choice.</p>
+      <div class="hero-actions"><a class="button primary" href="#work">Explore selected work <span aria-hidden="true">↗</span></a><a class="button secondary" href="#about">Get to know me <span aria-hidden="true">↓</span></a></div>
+      <div class="hero-bottom"><span class="vertical-stroke"></span><span>Turning curiosity into<br>systems that work.</span></div>
+    </div>
+    <div class="hero-visual" data-reveal>
+      <div class="visual-header"><span>01 / CLOUDOPS NETWORK</span><span class="connected"><span class="pulse"></span> ARCHITECTURE</span></div>
+      <div class="hero-diagram" aria-label="Interactive CloudOps infrastructure diagram">
+        <svg class="connection-lines" viewBox="0 0 560 440" aria-hidden="true"><defs><linearGradient id="path-glow" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#abdaba" stop-opacity=".7"/><stop offset="1" stop-color="#8494ba" stop-opacity=".27"/></linearGradient></defs><path d="M280 75L145 166M280 75L418 166M145 166L280 285M418 166L280 285M280 285L145 376M280 285L421 376"/><path class="active-path" d="M280 75L145 166L280 285L421 376" stroke="url(#path-glow)"/></svg>
+        <button class="node node-github" data-node="github" type="button" aria-pressed="false"><span class="node-symbol">⌘</span><span>GITHUB</span></button>
+        <button class="node node-terraform" data-node="terraform" type="button" aria-pressed="false"><span class="node-symbol">◇</span><span>TERRAFORM</span></button>
+        <button class="node node-oidc" data-node="oidc" type="button" aria-pressed="false"><span class="node-symbol">◇</span><span>OIDC / IAM</span></button>
+        <button class="node node-ec2 active" data-node="ec2" type="button" aria-pressed="true"><span class="node-symbol">▣</span><span>AWS EC2</span></button>
+        <button class="node node-monitor" data-node="monitor" type="button" aria-pressed="false"><span class="node-symbol">◉</span><span>CLOUDWATCH</span></button>
+        <button class="node node-web" data-node="web" type="button" aria-pressed="false"><span class="node-symbol">↗</span><span>HTTPS</span></button>
+        <div class="diagram-orbit orbit-one" aria-hidden="true"></div><div class="diagram-orbit orbit-two" aria-hidden="true"></div>
+      </div>
+      <div class="visual-footer" aria-live="polite"><span class="visual-prompt">↳</span><div><strong id="node-title">EC2 · Application server</strong><p id="node-description">Ubuntu, Nginx, Gunicorn and Flask run the application.</p></div><a href="{{ url_for('project_detail', slug='cloudops') }}" aria-label="Explore CloudOps details">↗</a></div>
+    </div>
+  </div>
+  <div class="hero-shelf"><div class="micro">ENGINEERING TOOLKIT</div><div class="shelf-tags" aria-label="Key technologies"><span>AWS</span><b>·</b><span>LINUX</span><b>·</b><span>PYTHON</span><b>·</b><span>TERRAFORM</span><b>·</b><span>GITHUB ACTIONS</span><b>·</b><span>NETWORKING</span></div></div>
+</section>
+
+<section id="work" class="section shell work-section" aria-labelledby="work-heading">
+  <div class="section-top" data-reveal><div><div class="section-kicker"><span>01 / SELECTED WORK</span><span class="small-line"></span></div><h2 id="work-heading">Projects that <em>ship.</em></h2></div><p class="section-intro">Real infrastructure, working software, and the questions worth asking along the way.</p></div>
+  <a class="featured-card" href="{{ url_for('project_detail', slug='cloudops') }}" data-reveal>
+    <div class="featured-copy"><div class="project-overline"><span>FLAGSHIP PROJECT</span><span class="project-number">01 — AWS / DEVOPS</span></div><h3>CloudOps<span class="accent">.</span></h3><p>A real application, a real server, and an automated path from commit to deployment. Built on AWS with Terraform, Linux, GitHub Actions and a healthy respect for production.</p><div class="project-pills"><span>EC2 / Linux</span><span>Terraform</span><span>GitHub Actions</span><span>OIDC / SSM</span></div><span class="text-link">Explore the full case study <span aria-hidden="true">↗</span></span></div>
+    <div class="featured-graphic" aria-hidden="true"><div class="graphic-label">SYSTEM ARCHITECTURE / OVERVIEW</div><div class="stack-view"><div class="stack-layer layer-1"><span>01</span><strong>GitHub Actions</strong><small>Test · Release</small></div><div class="stack-connector"></div><div class="stack-layer layer-2"><span>02</span><strong>AWS Systems Manager</strong><small>Secure remote execution</small></div><div class="stack-connector"></div><div class="stack-layer layer-3"><span>03</span><strong>EC2 · Nginx · Flask</strong><small>Application layer</small></div></div><div class="graphic-bottom"><span><span class="signal-dot"></span> VERIFIED HEALTH ENDPOINT</span><span>EU-WEST-1</span></div></div>
+  </a>
+  <div class="project-grid" data-reveal>
+    <a class="small-project" href="{{ url_for('project_detail', slug='banking') }}"><span class="small-project-number">02 / SOFTWARE</span><div class="project-glyph">▤</div><h3>Banking simulation</h3><p>Full-stack authentication, accounts and simulated transaction workflows.</p><div class="small-project-footer"><span>Academic project</span><span aria-hidden="true">↗</span></div></a>
+    <a class="small-project" href="{{ url_for('project_detail', slug='windows-server') }}"><span class="small-project-number">03 / INFRASTRUCTURE</span><div class="project-glyph">⌗</div><h3>Windows Server lab</h3><p>A virtualized client–server network with DNS, DHCP and resource management.</p><div class="small-project-footer"><span>Academic lab</span><span aria-hidden="true">↗</span></div></a>
+    <a class="small-project" href="{{ url_for('project_detail', slug='calculator') }}"><span class="small-project-number">04 / DEVELOPMENT</span><div class="project-glyph">∑</div><h3>C# calculator</h3><p>A console application built around calculation logic and error handling.</p><div class="small-project-footer"><span>Academic project</span><span aria-hidden="true">↗</span></div></a>
+  </div>
+</section>
+
+<section id="experience" class="section experience-band" aria-labelledby="experience-heading"><div class="shell">
+  <div class="section-top" data-reveal><div><div class="section-kicker"><span>02 / EXPERIENCE</span><span class="small-line"></span></div><h2 id="experience-heading">Beyond the <em>classroom.</em></h2></div><p class="section-intro">Practical IT work across enterprise networks, Linux servers, applications and support.</p></div>
+  <div class="timeline" data-reveal>
+    <article class="timeline-item"><div class="timeline-marker"><span>01</span></div><div class="timeline-title"><div class="micro">IT INFRASTRUCTURE & SOFTWARE DEVELOPMENT · INTERNSHIP</div><h3>Dender19</h3><p>Hands-on experience supporting real network infrastructure, Linux servers and application deployment.</p></div><ul><li>Independently configured a Linux server and hosted a website over HTTPS.</li><li>Worked on Ethernet, routers, wireless access points and IP phone connectivity.</li><li>Developed an examination-support application and participated in its organization-wide Microsoft Intune rollout.</li><li>Used Python and PowerShell for automation; troubleshot equipment, software and networking issues.</li></ul></article>
+    <article class="timeline-item"><div class="timeline-marker"><span>02</span></div><div class="timeline-title"><div class="micro">IT OPERATIONS & DATA ANALYTICS · INTERNSHIP</div><h3>VS Direct</h3><p>A cross-functional look at how IT systems support everyday business operations.</p></div><ul><li>Provided technical support, hardware troubleshooting and IT maintenance.</li><li>Worked with sales, stock and operational reporting data.</li><li>Supported visitor-count analytics, web services and process improvements.</li></ul></article>
+    <article class="timeline-item timeline-education"><div class="timeline-marker"><span>03</span></div><div class="timeline-title"><div class="micro">TECHNICAL SECONDARY EDUCATION</div><h3>Application & Database Management</h3><p>Software engineering, relational databases, networking, virtualization and Windows Server fundamentals.</p></div><ul><li>Programming with C#, PHP, JavaScript, HTML, CSS and SQL.</li><li>MySQL, object-oriented programming, TCP/IP, DNS and DHCP.</li><li>Academic banking application, Windows Server lab and C# calculator.</li></ul></article>
+  </div>
+</div></section>
+
+<section id="skills" class="section shell" aria-labelledby="skills-heading">
+  <div class="section-top" data-reveal><div><div class="section-kicker"><span>03 / CAPABILITIES</span><span class="small-line"></span></div><h2 id="skills-heading">Tools &amp; <em>thinking.</em></h2></div><p class="section-intro">A mix of work experience, technical education and independently built projects. No imaginary proficiency scores.</p></div>
+  <div class="skills-wrap" data-reveal>
+    <div class="skill-controls" role="group" aria-label="Filter skill categories"><button type="button" class="filter active" data-filter="all" aria-pressed="true">All capabilities</button><button type="button" class="filter" data-filter="cloud" aria-pressed="false">Cloud & DevOps</button><button type="button" class="filter" data-filter="systems" aria-pressed="false">Systems</button><button type="button" class="filter" data-filter="code" aria-pressed="false">Development</button><button type="button" class="filter" data-filter="enterprise" aria-pressed="false">Enterprise IT</button></div>
+    <div class="skill-grid">
+      <article class="skill-group" data-category="cloud"><span>01 / CLOUD</span><h3>Cloud &amp; delivery</h3><div class="skill-tokens"><span>AWS EC2</span><span>AWS IAM</span><span>Systems Manager</span><span>CloudWatch</span><span>Terraform</span><span>GitHub Actions</span><span>OIDC</span></div></article>
+      <article class="skill-group" data-category="systems"><span>02 / INFRASTRUCTURE</span><h3>Systems &amp; networking</h3><div class="skill-tokens"><span>Linux</span><span>Windows Server</span><span>Virtualization</span><span>TCP/IP</span><span>DNS</span><span>DHCP</span><span>Networking</span><span>Nginx</span><span>HTTPS / TLS</span></div></article>
+      <article class="skill-group" data-category="code"><span>03 / SOFTWARE</span><h3>Development &amp; data</h3><div class="skill-tokens"><span>Python</span><span>C#</span><span>JavaScript</span><span>PHP</span><span>HTML / CSS</span><span>Flask</span><span>SQL</span><span>MySQL</span><span>PowerShell</span></div></article>
+      <article class="skill-group" data-category="enterprise"><span>04 / OPERATIONS</span><h3>Enterprise IT</h3><div class="skill-tokens"><span>Microsoft Intune</span><span>Hardware diagnostics</span><span>IT support</span><span>Application deployment</span><span>Network administration</span><span>Reporting &amp; analytics</span></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="section about-band" id="about" aria-labelledby="about-heading"><div class="shell about-grid">
+  <div class="about-portrait" data-reveal><img src="{{ url_for('static', filename='img/portrait.svg') }}" alt="Portrait of Nikolas wearing glasses, headphones and a black coat" width="399" height="600" loading="lazy" decoding="async"><div class="portrait-border"></div><div class="portrait-caption"><span>THE PERSON BEHIND THE SYSTEMS</span><strong>NIKOLAS / 001</strong></div></div>
+  <div class="about-content" data-reveal><div class="section-kicker"><span>04 / THE HUMAN SIDE</span><span class="small-line"></span></div><h2 id="about-heading">It started with <em>curiosity.</em></h2><p class="about-lead">Long before I knew what a server was, I wanted to know how the things I loved actually worked.</p><p>My introduction to technology came through video games: first on a console, then on a computer. Modding games led me into configuration files, code, and the logic behind software. Eventually, learning how systems work became more exciting than simply using them.</p><p>That curiosity grew into programming, databases, Linux, networking, servers and cloud infrastructure. During technical education and two internships, I had the opportunity to work with real IT environments — from cables and access points to Linux hosting and enterprise application deployment.</p><p>Today I build projects that connect these disciplines. I'm especially interested in cloud engineering, DevOps, systems architecture and security — and in becoming the kind of engineer who understands the full path from idea to production.</p><div class="about-signature"><strong>Build. Understand. Improve.</strong><span>My approach to learning.</span></div></div>
+</div></section>
+
+<section class="section contact-section shell" id="contact" aria-labelledby="contact-heading">
+  <div class="contact-content" data-reveal><div class="section-kicker"><span>05 / GET IN TOUCH</span><span class="small-line"></span></div><h2 id="contact-heading">Let's make<br><em>something work.</em></h2><p>Exploring opportunities in cloud engineering, DevOps, infrastructure, software development and security. I'm always interested in meaningful technical problems and people who enjoy solving them.</p><a class="email-link" href="mailto:wasielewski.nikolas@outlook.com">wasielewski.nikolas@outlook.com <span aria-hidden="true">↗</span></a><button class="copy-email" type="button" data-copy="wasielewski.nikolas@outlook.com" aria-label="Copy email address">Copy email <span aria-hidden="true">⧉</span></button></div>
+  <div class="contact-details" data-reveal><div class="contact-detail"><span>LOCATION</span><strong>Soignies, Belgium</strong></div><div class="contact-detail"><span>PHONE</span><a href="tel:+32470810490">+32 470 81 04 90 ↗</a></div><div class="contact-detail"><span>LINKEDIN</span><a href="https://www.linkedin.com/in/nikolas-wasielewski-050338352/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn ↗</a></div><div class="contact-detail"><span>GITHUB</span><a href="https://github.com/NyxxOhhNyxx" target="_blank" rel="noopener noreferrer">Explore my repositories ↗</a></div><div class="contact-note">Prefer email? That's the best way to get in touch. I don't use a contact form, so there are no third-party form services handling your message.</div></div>
+</section>
+{% endblock %}
