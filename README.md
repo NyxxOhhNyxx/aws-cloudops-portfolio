@@ -226,14 +226,17 @@ Terraform (HCL) is used to describe and track existing AWS infrastructure. The p
 - Imported resources were checked with `terraform validate` and `terraform plan`, producing a **No changes** result after import and cleanup.
 - `prevent_destroy = true` is configured on the managed EC2 instance and security group to help protect against accidental Terraform-driven replacement or deletion.
 
-The instance uses the default VPC (`172.31.0.0/16`) and a subnet in `eu-west-1a` (`172.31.16.0/20`). **These networking components have been inspected but not yet imported as Terraform-managed resources.** Existing IAM resources are also not yet defined in Terraform.
+The instance uses the default VPC (`172.31.0.0/16`) and a subnet in `eu-west-1a` (`172.31.16.0/20`). **The VPC and subnet are referenced with read-only Terraform data sources; they are not imported or managed by Terraform.** Existing IAM resources are also not yet defined in Terraform.
 
 ### State and Repository Safety
 
 - Terraform configuration and the provider lock file are committed to GitHub.
 - Local Terraform state (`*.tfstate`), plans (`*.tfplan`), and variable values (`*.tfvars`) are excluded by `.gitignore`.
 - SSH CIDR values are supplied through an ignored local `terraform.tfvars` file.
-- A secure remote state backend, state locking, configuration parameterization, and fully reproducible provisioning remain future improvements.
+- The S3 remote backend is configured at `terraform/backend.tf` using bucket `cloudops-tfstate-176550299744-eu-west-1-an`, key `cloudops/terraform.tfstate`, `encrypt = true`, and S3 lockfiles via `use_lockfile = true`.
+- The S3 bucket was created separately in AWS; it is not provisioned or managed by this Terraform configuration. Bucket versioning, encryption settings and Block Public Access should be verified in the AWS console.
+- Terraform state has been migrated from local storage to the remote backend; a private local pre-migration backup is retained outside the repository.
+- Further improvements include full infrastructure reproducibility and configuration parameterization.
 - All infrastructure changes require review of `terraform plan` before any `terraform apply`.
 
 ---
@@ -253,12 +256,14 @@ The instance uses the default VPC (`172.31.0.0/16`) and a subnet in `eu-west-1a`
 | `terraform/ec2.tf` | Imported EC2 instance configuration and lifecycle protection |
 | `terraform/networking.tf` | Imported security group and five individual firewall rules |
 | `terraform/variables.tf` | Terraform SSH CIDR variable declarations |
+| `terraform/vpc.tf` | Read-only lookups and outputs for the existing VPC and subnet |
+| `terraform/backend.tf` | S3 backend settings, encryption and state locking |
 | `terraform/.terraform.lock.hcl` | Version lock for the Terraform AWS provider |
 | `docs/screenshots/` | Infrastructure documentation and screenshots |
 | `.gitignore` | Local file and sensitive-file exclusions |
 | `README.md` | Project documentation |
 
-Terraform state and `terraform.tfvars` remain local and are not committed. The live deployment script currently resides on EC2 at `/usr/local/sbin/cloudops-deploy`; version-controlling and testing that script end-to-end remain planned improvements.
+Terraform state is stored remotely in S3 and excluded from Git. Local `terraform.tfvars` and state backups also remain outside Git tracking. The live deployment script currently resides on EC2 at `/usr/local/sbin/cloudops-deploy`; version-controlling and testing that script end-to-end remain planned improvements.
 
 ---
 
@@ -293,10 +298,10 @@ Terraform state and `terraform.tfvars` remain local and are not committed. The l
 
 - [x] Implement Terraform configurations for existing EC2 and security-group resources.
 - [x] Import the EC2 instance, security group, and existing firewall rules without modifying live infrastructure.
-- [ ] Import or model the existing VPC and subnet safely.
+- [x] Reference the existing VPC and subnet safely using Terraform data sources (read-only, not managed).
 - [ ] Define relevant IAM resources in Terraform using least-privilege permissions.
 - [ ] Make infrastructure configuration reproducible and parameterized.
-- [ ] Implement secure remote Terraform state storage and locking.
+- [x] Configure S3 remote Terraform state storage and native S3 lockfile locking.
 
 ### CI/CD Improvements
 
