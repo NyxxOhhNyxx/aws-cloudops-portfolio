@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block title %}Page not found — Nikolas Wasielewski{% endblock %}
+{% block content %}
+<section class="shell error-page"><span class="eyebrow">SYSTEM / 404</span><h1>Wrong turn.<br><em>Nothing here.</em></h1><p>The page you're looking for doesn't exist.</p><a class="button primary" href="{{ url_for('home') }}">Go home <span aria-hidden="true">↗</span></a></section>
+{% endblock %}

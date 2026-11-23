@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0c0e">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Nikolas Wasielewski — cloud, infrastructure and software engineering portfolio. AWS, Linux, Terraform, automation, and hands-on projects.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Nikolas Wasielewski — Cloud & Infrastructure Engineering">
+  <meta property="og:description" content="A portfolio of real cloud infrastructure, software projects and hands-on IT experience.">
+  <title>{% block title %}Nikolas Wasielewski — Cloud & Infrastructure Engineer{% endblock %}</title>
+  <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+  <link rel="preload" href="{{ url_for('static', filename='css/styles.css') }}" as="style">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <script src="{{ url_for('static', filename='js/site.js') }}" defer></script>
+</head>
+<body data-page="{% block page %}home{% endblock %}">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+  <header class="header" id="top">
+    <div class="shell header-content">
+      <a href="{{ url_for('home') }}" class="logo" aria-label="Nikolas Wasielewski — home"><span class="logo-icon">N<span>.</span></span><span>NIKOLAS<span class="muted-dot">.</span></span></a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="{{ url_for('home') }}#work">Work</a>
+        <a href="{{ url_for('home') }}#experience">Experience</a>
+        <a href="{{ url_for('home') }}#skills">Skills</a>
+        <a href="{{ url_for('home') }}#about">About</a>
+      </nav>
+      <a class="top-contact" href="{{ url_for('home') }}#contact">Let's talk <span aria-hidden="true">↗</span></a>
+      <button class="menu-button" type="button" aria-controls="mobile-nav" aria-expanded="false" aria-label="Open navigation"><span></span><span></span></button>
+    </div>
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation" hidden>
+      <a href="{{ url_for('home') }}#work">Work</a><a href="{{ url_for('home') }}#experience">Experience</a><a href="{{ url_for('home') }}#skills">Skills</a><a href="{{ url_for('home') }}#about">About</a><a href="{{ url_for('home') }}#contact">Contact ↗</a>
+    </nav>
+  </header>
+  <main id="main">{% block content %}{% endblock %}</main>
+  <footer class="footer">
+    <div class="shell footer-inner"><div class="footer-brand">NW<span class="accent">.</span> <span>Built with intention. Hosted with care.</span></div><div class="footer-right"><a href="https://github.com/NyxxOhhNyxx" rel="noopener noreferrer" target="_blank">GitHub ↗</a><a href="https://www.linkedin.com/in/nikolas-wasielewski-050338352/" rel="noopener noreferrer" target="_blank">LinkedIn ↗</a><a href="#top">Back to top ↑</a></div></div>
+    <div class="shell footer-meta">© {{ year }} Nikolas Wasielewski · Soignies, Belgium · <a href="{{ url_for('health') }}">API health</a></div>
+  </footer>
+</body>
+</html>

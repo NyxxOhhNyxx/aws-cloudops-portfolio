@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}{{ project.name }} — Project by Nikolas Wasielewski{% endblock %}
+{% block page %}project{% endblock %}
+{% block content %}
+<header class="shell detail-hero">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="{{ url_for('home') }}#work">← All projects</a><span>/</span>{{ project.number }} · {{ project.type }}</nav>
+  <span class="eyebrow">SELECTED WORK / {{ project.number }}</span>
+  <h1>{{ project.name }}<em>.</em></h1>
+  <p class="detail-subtitle">{{ project.subtitle }}</p>
+  <div class="detail-tags">{% for tag in project.tags %}<span>{{ tag }}</span>{% endfor %}</div>
+</header>
+<section class="shell detail-main">
+  <div><div class="detail-overline">THE BIG PICTURE</div><h2>What I <em>built.</em></h2><p>{{ project.summary }}</p><p>{{ project.context }}</p>
+    {% if project.architecture %}
+    <div class="case-arch" aria-label="Simplified deployment architecture"><div class="micro">DEPLOYMENT FLOW / SIMPLIFIED</div><div class="case-arch-track"><span>GitHub<br>Actions</span><b>→</b><span>AWS OIDC<br>IAM</span><b>→</b><span>Systems<br>Manager</span><b>→</b><span>EC2<br>Flask</span></div></div>
+    {% endif %}
+  </div>
+  <aside class="detail-side"><div class="detail-side-row"><span>PROJECT TYPE</span><strong>{{ project.type }}</strong></div><div class="detail-side-row"><span>MY ROLE</span><strong>{{ project.role }}</strong></div><div class="detail-side-row"><span>YEAR / STATUS</span><strong>{% if project.architecture %}2026 · Active development{% else %}Completed during technical studies{% endif %}</strong></div>
+    {% if project.github or project.live %}<div class="detail-side-actions">{% if project.github %}<a href="{{ project.github }}" target="_blank" rel="noopener noreferrer">GitHub repository ↗</a>{% endif %}{% if project.live %}<a href="{{ project.live }}" target="_blank" rel="noopener noreferrer">{{ project.live_label }} ↗</a>{% endif %}</div>{% endif %}
+  </aside>
+</section>
+<section class="case-steps"><div class="shell"><div class="section-kicker"><span>THE WORK</span><span class="small-line"></span></div><h2>Challenges &amp; <em>decisions.</em></h2><div class="case-grid">{% for item in project.challenges %}<article class="case-card"><span>0{{ loop.index }}</span><h3>{{ item.title }}</h3><p>{{ item.text }}</p></article>{% endfor %}</div></div></section>
+<section class="case-outcomes shell"><div class="section-kicker"><span>THE RESULT</span><span class="small-line"></span></div><h2>What came <em>out of it.</em></h2><ul class="outcome-list">{% for outcome in project.outcomes %}<li>{{ outcome }}</li>{% endfor %}</ul><div class="case-note"><strong>Scope &amp; limitations:</strong> {{ project.note }}</div></section>
+<div class="shell case-next"><div><p>KEEP EXPLORING</p><h2>More work. More to learn.</h2></div><a href="{{ url_for('home') }}#work">← All projects</a></div>
+{% endblock %}
